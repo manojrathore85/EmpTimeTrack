@@ -11,5 +11,9 @@
                 <x-welcome />
             </div>
         </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <h1 class="text-2xl font-bold">Time Logs</h1>
+            @livewire('time-log-table') <!-- Include the Livewire component here -->
+        </div>
     </div>
 </x-app-layout>

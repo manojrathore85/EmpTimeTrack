@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\TimeLogForm;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('dashboard');    
+});
+Route::middleware(['auth:sanctum', 'role:employee'])->group(function () {
+    Route::get('/log-time', TimeLogForm::class)->name('log-time');
 });
