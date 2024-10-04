@@ -1,0 +1,5 @@
+steps 
+
+
+composer create-project laravel/laravel:^10.0 EmpTimeTrack
+composer require laravel/jetstream
