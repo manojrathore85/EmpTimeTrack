@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 class RolesTableSeeder extends Seeder
 {
     /**
@@ -13,8 +14,7 @@ class RolesTableSeeder extends Seeder
 
     public function run()
     {
-        Role::create(['name' => 'employee']);
-        Role::create(['name' => 'manager']);
+        User::factory()->count(100)->create();
     }
     
 }

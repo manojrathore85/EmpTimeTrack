@@ -24,6 +24,14 @@ class TimeLogForm extends Component implements Forms\Contracts\HasForms
     protected function getFormSchema(): array
     {
         return [
+            Forms\Components\Grid::make() // Set a 2-column grid
+            ->columns([
+                'xs' => 1, // 1 column on small screens
+                'sm' => 2, // 1 column on small screens
+                'md' => 3, // 2 columns on medium screens and up
+                'lg' => 4, // 2 columns on medium screens and up
+            ])
+            ->schema([
             Forms\Components\Select::make('department_id')
                 ->label('Department')
                 ->options(Department::all()->pluck('name', 'id')->toArray())
@@ -56,7 +64,13 @@ class TimeLogForm extends Component implements Forms\Contracts\HasForms
             Forms\Components\TimePicker::make('end_time')
                 ->label('End Time')
                 ->required(),
-        ];
+                Forms\Components\TextInput::make('total_hours')
+                ->label('Total Hour')
+                ->required()  
+                ->numeric()
+                ->minValue(0)
+                ->maxValue(24)              
+        ])];
     }
 
     public function save()

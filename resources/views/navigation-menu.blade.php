@@ -150,6 +150,11 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+        @if(auth()->user()->hasRole('employee'))
+                    <x-responsive-nav-link href="{{ route('log-time') }}" :active="request()->routeIs('log-time')">
+                        {{ __('Log Time') }}
+                    </x-responsive-nav-link>
+         @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
