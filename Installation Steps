@@ -5,3 +5,10 @@ composer create-project laravel/laravel:^10.0 EmpTimeTrack
 composer require laravel/jetstream
 composer require filament/forms
 php artisan make:livewire TimeLogForm
+composer require spatie/laravel-permission
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+php artisan migrate
+php artisan make:seeder RolesTableSeeder
+php artisan db:seed --class=RolesTableSeeder
+

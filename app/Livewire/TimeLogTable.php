@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Carbon\Carbon;
 
 class TimeLogTable extends Component
 {
@@ -35,7 +36,7 @@ class TimeLogTable extends Component
         'timeLogFields.date' => 'required',
         'timeLogFields.start_time' => 'required',
         'timeLogFields.end_time' => 'required',
-        'timeLogFields.total_hours' => 'required',
+        //'timeLogFields.total_hours' => 'required',
  
         
     ];
@@ -56,6 +57,20 @@ class TimeLogTable extends Component
     public $perPage = 5;
 
 
+    protected function customValidation()
+    {
+        $this->validate([
+            'timeLogFields.start_time' => 'required',
+            'timeLogFields.end_time' => function ($attribute, $value, $fail) {
+                $start = Carbon::createFromFormat('H:i:s', $this->timeLogFields['start_time']);
+                $end = Carbon::createFromFormat('H:i:s', $value);
+
+                if ($end->lessThanOrEqualTo($start)) {
+                    $fail('The End Time must be greater than Start Time.');
+                }
+            },
+        ]);
+    }
     public function updatedSearch()
     {
         $this->resetPage();
@@ -157,7 +172,9 @@ class TimeLogTable extends Component
     {
         // Validate the form data
         $this->validate();
-       
+        $this->customValidation();
+
+        $this->timeLogFields['total_hours'] = Carbon::parse($this->timeLogFields['start_time'])->diffInHours(Carbon::parse($this->timeLogFields['end_time']));
         // Find the time log and update its data
         $timeLog = TimeLog::findOrFail($this->timeLogId);
         $timeLog->update([

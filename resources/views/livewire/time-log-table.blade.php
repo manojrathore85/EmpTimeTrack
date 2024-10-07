@@ -131,6 +131,7 @@
                         <option value="{{ $subproject->id }}">{{ $subproject->name }}</option>
                         @endforeach
                     </select>
+                    @error('timeLogFields.subproject_id') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="flex flex-col">
@@ -140,24 +141,28 @@
                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                         @endforeach
                     </select>
+                    @error('timeLogFields.user_id') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="flex flex-col">
                     <label for="date" class="mb-1">Date</label>
                     <input type="date" wire:model="timeLogFields.date" class="border border-gray-300 rounded p-2" />
+                    @error('timeLogFields.date') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="flex flex-col">
                     <label for="start_time" class="mb-1">Start Time</label>
                     <input type="time" step="1" wire:model="timeLogFields.start_time" class="border border-gray-300 rounded p-2" />
+                    @error('timeLogFields.start_time') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="flex flex-col">
                     <label for="end_time" class="mb-1">End Time</label>
                     <input type="time" step="1" wire:model="timeLogFields.end_time" class="border border-gray-300 rounded p-2" />
+                    @error('timeLogFields.end_time') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
-                <div class="flex flex-col">
+                <!-- <div class="flex flex-col">
                     <label for="total_hours" class="mb-1">Total Time</label>
                     <input type="number" wire:model="timeLogFields.total_hours" class="border border-gray-300 rounded p-2" />
-                </div>
+                </div> -->
 
                 <div class="flex justify-between">
                     <button type="submit" class="bg-blue-500 text-white rounded px-4 py-2">Save</button>

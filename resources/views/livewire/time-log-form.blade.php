@@ -19,24 +19,25 @@
     </div>
 </div>
 <script>
-    function calculateTotalHours() {
-        const startTime = document.getElementById('start_time').value;
-        const endTime = document.getElementById('end_time').value;
+    // function calculateTotalHours() {
+    //     const startTime = document.getElementById('start_time').value;
+    //     const endTime = document.getElementById('end_time').value;
 
-        if (startTime && endTime) {
-            const start = new Date(`1970-01-01T${startTime}:00`);
-            const end = new Date(`1970-01-01T${endTime}:00`);
+    //     if (startTime && endTime) {
+    //         const start = new Date(`1970-01-01T${startTime}:00`);
+    //         const end = new Date(`1970-01-01T${endTime}:00`);
 
-            let diffInMinutes = (end - start) / 1000 / 60; // Difference in minutes
-            if (diffInMinutes < 0) {
-                // If the end time is before the start time, assume it's the next day
-                diffInMinutes += 24 * 60;
-            }
+    //         let diffInMinutes = (end - start) / 1000 / 60; // Difference in minutes
+    //         if (diffInMinutes < 0) {
+    //             // If the end time is before the start time, assume it's the next day
+    //             diffInMinutes += 24 * 60;
+    //         }
 
-            const totalHours = (diffInMinutes / 60).toFixed(2); // Convert to hours and round to 2 decimal places
-            document.getElementById('total_hours').value = totalHours;
+    //         const totalHours = (diffInMinutes / 60).toFixed(2); // Convert to hours and round to 2 decimal places
+    //         document.getElementById('total_hours').value = totalHours;
 
-            // Trigger Livewire update to set total_hours
-            @this.set('timeLogFields.total_hours', totalHours);
-        }
-    }
+    //         // Trigger Livewire update to set total_hours
+    //         //@this.set('timeLogFields.total_hours', totalHours);
+    //     }
+    // }
+</script>    
