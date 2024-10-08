@@ -12,3 +12,6 @@ php artisan migrate
 php artisan make:seeder RolesTableSeeder
 php artisan db:seed --class=RolesTableSeeder
 
+composer require maatwebsite/excel
+
+

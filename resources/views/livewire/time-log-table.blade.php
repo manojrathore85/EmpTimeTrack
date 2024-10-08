@@ -23,10 +23,16 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
                                 placeholder="Search" required="">
                         </div>
+
+                    </div>
+                    <div class="flex justify-end mb-4">
+                        <button wire:click="exportToExcel" class="px-4 mx-2 py-2 bg-blue-500 text-white rounded">Export to Excel</button>
+                        <button wire:click="exportToCSV" class="px-4 py-2 bg-green-500 text-white rounded">Export to CSV</button>
                     </div>
 
                 </div>
                 <div class="overflow-x-auto">
+
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
