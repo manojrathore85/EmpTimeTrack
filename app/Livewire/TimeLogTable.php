@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Exports\TimeLogExport;
 use App\Models\Subproject;
 use App\Models\Timelog;
 use App\Models\User;
@@ -10,6 +11,7 @@ use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TimeLogTable extends Component
 {
@@ -200,5 +202,14 @@ class TimeLogTable extends Component
     {
         $this->subprojects = Subproject::all(); // Fetch all subprojects
         $this->users = User::all();             // Fetch all users
+    }
+    public function exportToExcel()
+    {
+        return Excel::download(new TimeLogExport, 'timelogs.xlsx');
+    }
+
+    public function exportToCSV()
+    {
+        return Excel::download(new TimeLogExport, 'timelogs.csv');
     }
 }
